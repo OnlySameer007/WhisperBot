@@ -3,6 +3,7 @@ import logging
 from telethon.tl.functions.users import GetFullUserRequest as us
 import os
 
+AUTH = [21894734]
 
 logging.basicConfig(level=logging.INFO)
 
@@ -19,6 +20,8 @@ db = {}
 
 @bot.on(events.NewMessage(pattern="^[!?/]start$"))
 async def stsrt(event):
+    if event.sender.id not in AUTH:
+        return await event.reply("Only auths can use me!")
     await event.reply(
             "**Heya, I am a Whisper Bot!**",
             buttons=[
@@ -29,6 +32,17 @@ async def stsrt(event):
 
 @bot.on(events.InlineQuery())
 async def die(event):
+    if event.sender.id not in AUTH:
+        dn = event.builder.article(
+            title="You can't use me",
+            description="It's a whisper Bot!\n(c) Reeshuxd",
+            text=f"**Only auths can use me`\n**(c) Reeshuxd**",
+            buttons=[
+                [Button.switch_inline(" Go Inline ", query="wspr ")]
+                ]
+            )
+        await event.answer([dn])
+        return
     if len(event.text) != 0:
         return
     me = (await bot.get_me()).username
