@@ -21,7 +21,7 @@ db = {}
 @bot.on(events.NewMessage(pattern="^[!?/]start$"))
 async def stsrt(event):
     if event.sender.id not in AUTH:
-        return await event.reply("Only auths can use me!")
+        return await event.reply("Only Sameer can use me!")
     await event.reply(
             "**Heya, I am a Whisper Bot!**",
             buttons=[
@@ -36,7 +36,7 @@ async def die(event):
         dn = event.builder.article(
             title="You can't use me",
             description="It's a whisper Bot!",
-            text=f"**Only auths can use me**",
+            text=f"**Only Sameer can use me**",
             buttons=[
                 [Button.switch_inline(" Go Inline ", query="wspr ")]
                 ]
