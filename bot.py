@@ -3,7 +3,7 @@ import logging
 from telethon.tl.functions.users import GetFullUserRequest as us
 import os
 
-AUTH = [21894734]
+AUTH = [1138076229]
 
 logging.basicConfig(level=logging.INFO)
 
@@ -35,8 +35,8 @@ async def die(event):
     if event.sender.id not in AUTH:
         dn = event.builder.article(
             title="You can't use me",
-            description="It's a whisper Bot!\n(c) Reeshuxd",
-            text=f"**Only auths can use me`\n**(c) Reeshuxd**",
+            description="It's a whisper Bot!",
+            text=f"**Only auths can use me**",
             buttons=[
                 [Button.switch_inline(" Go Inline ", query="wspr ")]
                 ]
@@ -48,8 +48,8 @@ async def die(event):
     me = (await bot.get_me()).username
     dn = event.builder.article(
             title="It's a whisper bot!",
-            description="It's a whisper Bot!\n(c) Reeshuxd",
-            text=f"**It's a whisper bot**\n`@{me} wspr UserID|Message`\n**(c) Reeshuxd**",
+            description="It's a whisper Bot!",
+            text=f"**It's a whisper bot**\n`@{me} wspr UserID|Message`\n**",
             buttons=[
                 [Button.switch_inline(" Go Inline ", query="wspr ")]
                 ]
